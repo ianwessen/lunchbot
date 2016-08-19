@@ -1,27 +1,12 @@
-var SlackBot = require('slackbots');
- 
-// create a bot 
-var bot = new SlackBot({
-    token: process.env.SLACK_API_KEY, // Add a bot https://my.slack.com/services/new/bot and put the token  
-    name: 'Lunchbot'
-});
- 
-bot.on('start', function() {
-    // more information about additional params https://api.slack.com/methods/chat.postMessage 
-    var params = {
-        icon_emoji: ':cat:'
-    };
-    
-    // define channel, where bot exist. You can adjust it there https://my.slack.com/services  
-    bot.postMessageToChannel('general', 'meow!', params);
-    
-    // define existing username instead of 'user_name' 
-    bot.postMessageToUser('user_name', 'meow!', params); 
-    
-    // If you add a 'slackbot' property,  
-    // you will post to another user's slackbot channel instead of a direct message 
-    bot.postMessageToUser('user_name', 'meow!', { 'slackbot': true, icon_emoji: ':cat:' }); 
-    
-    // define private group instead of 'private_group', where bot exist 
-    bot.postMessageToGroup('private_group', 'meow!', params); 
+var slackTerminal = require('slack-terminalize');
+
+slackTerminal.init('xoxb-token', {
+    // slack rtm client options here
+    // more info at: https://github.com/slackhq/node-slack-client/blob/master/lib/clients/rtm/client.js
+}, {
+    // app configurations to suit your project structure
+    // to see the list of all possible config,
+    // check this out: https://github.com/ggauravr/slack-terminalize/blob/master/util/config.js
+	CONFIG_DIR: __dirname + '/config',
+	COMMAND_DIR: __dirname + '/commands'
 });
