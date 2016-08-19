@@ -1,0 +1,22 @@
+{
+  "name": "lunchbot",
+  "version": "1.0.0",
+  "description": "A bot for lunch! (no, you can not eat this bot)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianwessen/lunchbot.git"
+  },
+  "author": "Ian Wessen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianwessen/lunchbot/issues"
+  },
+  "homepage": "https://github.com/ianwessen/lunchbot#readme",
+  "dependencies": {
+    "slackbots": "^0.5.2"
+  }
+}
