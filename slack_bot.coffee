@@ -164,8 +164,11 @@ controller.hears [
 controller.hears [
 	'lunch today'
 	'what\'s for lunch'
+	'what\'s for lunch?'
 	'what\'s for lunch today'
+	'what\'s for lunch today?'
 	'what\'s the lunch today'
+	'what\'s the lunch today?'
 	], 'direct_message,direct_mention,mention', (bot, message) ->
-		lunchWeek = (moment().format('W') % 4) + 1 # + 1 to match current schedule
+		lunchWeek = ((moment().format('W') + 3) % 4) + 1
 		bot.reply message, "Check out the lunch schedule: https://goo.gl/u9c5U6. It's currently week " + lunchWeek + "."
