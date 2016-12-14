@@ -26,7 +26,20 @@ if !process.env.SLACK_API_KEY
 controller = Botkit.slackbot(debug: true, logLevel: 0)
 bot = controller.spawn(
 	token: process.env.SLACK_API_KEY
-).startRTM()
+)
+
+start_rtm = ->
+	bot.startRTM( (err,bot,payload) ->
+		if (err)
+			console.log('Failed to start RTM')
+			return setTimeout(start_rtm, 60000)
+		console.log("RTM started!")
+	)
+	
+controller.on 'rtm_close', (bot, err) ->
+	start_rtm()
+
+start_rtm()
 
 # Hears & Says
 controller.hears [
